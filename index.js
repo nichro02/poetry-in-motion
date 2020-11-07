@@ -38,7 +38,7 @@ app.use((req, res, next)=>{
 
 //set up middleware for controllers
 app.use('/auth', require('./controllers/auth.js'))
-
+app.use('/posts', require('./controllers/posts.js'))
 
 //SET UP HOME ROUTE
 app.get('/', (req, res)=> {

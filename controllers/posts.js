@@ -3,8 +3,8 @@ const router = express.Router()
 let db = require('../models')
 const axios = require('axios')
 
-//POST /posts - create a new post
-router.get('/', (req, res) => {
+//GET /posts/new - create a new post
+router.get('/new', (req, res) => {
     const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${process.env.access_key}`
     axios.get(unsplashUrl)
     .then(function(apiResponse) {
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 //https://help.unsplash.com/en/articles/2511315-guideline-attribution
 
 
-//GET /posts - display form to create new post
+//POST /posts - display form to create new post
 router.post('/', (req, res) => {
     console.log(req.body)
     res.send('VIEW POSTS ROUTE')

@@ -2,19 +2,22 @@
 <section>
     <form action="/post" method="POST">
         <div>
+            <label for="title">Title</label>
             <input type="text" id="title" placeholder="Write Your Title Here" required>
         </div>
 
         <img id="image" src=<%=imageUrl%>>
 
         <div>
-            <!--<label for="content" class="widget__input widget__input--label">Write your entry here</label>-->
-            
+            <label for="content">Content</label>
             <textarea type="text" id="content" name="content" placeholder="Write your entry here" required></textarea>
         </div>
-        <input type="submit" class="widget__input widget__input--submit">
+        
+        <input type="submit" value="Save">
     </form>
 </section>
+
+<a href="/">&larr; Back to Home</a>
 
 <footer>
     <p>Photo by <a href="<%=photographerLink%>/?utm_source=Poetry_In_Motion&utm_medium=referral"><%=photographerName%></a> on <a href="https://unsplash.com/?utm_source=Poetry_In_Motion&utm_medium=referral">Unsplash</a>

@@ -4,7 +4,7 @@ let db = require('../models')
 const axios = require('axios')
 
 //POST /posts - create a new post
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
     const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${process.env.access_key}`
     axios.get(unsplashUrl)
     .then(function(apiResponse) {
@@ -29,7 +29,8 @@ router.post('/', (req, res) => {
 
 
 //GET /posts - display form to create new post
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
+    console.log(req.body)
     res.send('VIEW POSTS ROUTE')
 })
 

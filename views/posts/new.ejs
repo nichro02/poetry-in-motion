@@ -1,5 +1,20 @@
 <h1>Write a Post</h1>
-<img src=<%=imageUrl%>>
+<section>
+    <form action="/post" method="POST">
+        <div>
+            <input type="text" id="title" placeholder="Write Your Title Here" required>
+        </div>
+
+        <img id="image" src=<%=imageUrl%>>
+
+        <div>
+            <!--<label for="content" class="widget__input widget__input--label">Write your entry here</label>-->
+            
+            <textarea type="text" id="content" name="content" placeholder="Write your entry here" required></textarea>
+        </div>
+        <input type="submit" class="widget__input widget__input--submit">
+    </form>
+</section>
 
 <footer>
     <p>Photo by <a href="<%=photographerLink%>/?utm_source=Poetry_In_Motion&utm_medium=referral"><%=photographerName%></a> on <a href="https://unsplash.com/?utm_source=Poetry_In_Motion&utm_medium=referral">Unsplash</a>

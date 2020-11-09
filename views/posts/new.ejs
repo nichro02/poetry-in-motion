@@ -1,16 +1,23 @@
-<h1>Write a Post</h1>
+<h1>New Post</h1>
 <section>
-    <form action="/post" method="POST">
+    <form action="/posts" method="POST">
         <div>
             <label for="title">Title</label>
-            <input type="text" id="title" placeholder="Write Your Title Here" required>
+            <input type="text" id="title" name = "title" placeholder="Write Your Title Here" required>
         </div>
 
-        <img id="image" src=<%=imageUrl%>>
+        <div>
+            <img src=<%=imageUrl%>>
+            <input type="hidden" id="image" name = "image" value="<%=imageUrl%>" required>
+        </div>
 
         <div>
             <label for="content">Content</label>
             <textarea type="text" id="content" name="content" placeholder="Write your entry here" required></textarea>
+        </div>
+
+        <div>
+            <input type="hidden" id="userId" name="userId" value=<%=userId%> required>
         </div>
         
         <input type="submit" value="Save">

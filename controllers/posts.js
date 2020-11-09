@@ -58,6 +58,9 @@ router.get('/index', (req, res) => {
         console.log(posts)
         res.render('posts/index.ejs', {posts: posts})
     })
+    .catch(error => {
+        console.log(error)
+    })
 })
 
 //GET /posts/:id - display a specific post
@@ -69,10 +72,26 @@ router.get('/:id', (req, res) => {
     .then(post => {
         res.render('posts/show.ejs', {post: post})
     })
+    .catch(error => {
+        console.log(error)
+    })
 })
 
 //UPDATE /posts/:id - update a post
 
 //DELETE /posts/:id - delete a post
+router.delete('/:id', (req, res) => {
+    let postId = req.params.id
+    db.post.destroy({
+        where: {id: postId}
+    })
+    .then(deletedPost => {
+        console.log(`ROW ${postId} DELETED`)
+        res.redirect('/')
+    })
+    .catch(error => {
+        console.log(error)
+    })
+})
 
 module.exports = router

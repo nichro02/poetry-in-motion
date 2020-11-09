@@ -1,0 +1,10 @@
+<h1>Posts</h1>
+
+<% posts.forEach(post => { %>
+    <h3>
+        <a href="/posts/<%= post.id %>"><%= post.title %></a>
+    </h3>
+    <p>by <%= post.user.name %> </p>
+<% }) %>
+
+<a href="/">&larr; Back to Home</a>

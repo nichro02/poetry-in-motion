@@ -15,6 +15,7 @@ router.get('/new', (req, res) => {
         data.photographerName = photo.user.name
         data.photographerLink = photo.links.html
         data.userId = req.user.dataValues.id
+        data.userName = req.user.dataValues.name
         console.log('API RESPONSE',photo)
         console.log('HOTLINK', photo.urls.regular)
         console.log('PHOTOGRAPHER NAME', photo.user.name)
@@ -50,7 +51,13 @@ router.post('/', (req, res) => {
 
 //GET /posts/index - view all posts
 router.get('/index', (req, res) => {
-    res.send('Put list of posts here')
+    db.post.findAll({
+        include: [db.user]
+    })
+    .then(posts => {
+        console.log(posts)
+        res.render('posts/index.ejs', {posts: posts})
+    })
 })
 
 //GET /posts/:id - display a specific post

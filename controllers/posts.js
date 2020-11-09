@@ -61,6 +61,15 @@ router.get('/index', (req, res) => {
 })
 
 //GET /posts/:id - display a specific post
+router.get('/:id', (req, res) => {
+    db.post.findOne({
+        where: {id: req.params.id},
+        include: [db.user, db.comment]
+    })
+    .then(post => {
+        res.render('posts/show.ejs', {post: post})
+    })
+})
 
 //UPDATE /posts/:id - update a post
 

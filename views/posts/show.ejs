@@ -12,6 +12,24 @@
     <p>No comments yet</p>
 <% } %>
 
+<h4>Add a Comment</h4>
+<form action="/posts/update/:id" method="POST">  
+    <div>
+        <label for="content">Comment</label>
+        <input type="text" id="content" name="content" required>
+    </div>
+
+    <div>
+        <input type="hidden" id="postId" name="postId" value="<%=post.id%>" required>
+    </div>
+
+    <div>
+        <input type="hidden" id="userId" name="userId" value="<%=post.user.id%>" required>
+    </div>
+
+  <input type="submit" value="Add Comment">
+</form>
+
 <a href="/posts/index">&larr; Back to Index</a>
 
 <form method="POST" action="/posts/<%=post.id%>/?_method=DELETE">
@@ -20,29 +38,6 @@
 
 <form method="GET" action="/posts/update/<%=post.id%>/?_method=PUT">
     <input type="submit" value="Update Post">
-</form>
-
-<h4>Add a Comment</h4>
-<form action="/comments" method="POST">
-    <div>
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>    
-
-    <div>
-        <label for="content">Comment</label>
-        <input type="text" class="form-control" id="content" name="content" required>
-    </div>
-
-    <div>
-        <input type="hidden" class="form-control" id="postId" name="postId" value="<%=post.id%>" required>
-    </div>
-
-    <div>
-        <input type="hidden" class="form-control" id="userId" name="userId" value="<%=post.user.id%>" required>
-    </div>
-
-  <input type="submit" value="Add Comment">
 </form>
 
 <footer>

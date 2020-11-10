@@ -65,9 +65,9 @@ router.get('/index', (req, res) => {
 
 //GET /posts/:id - display a specific post
 router.get('/:id', (req, res) => {
-    //let postId = req.params.id
+    let postId = req.params.id
     db.post.findOne({
-        where: {id: req.params.id},
+        where: {id: postId},
         include: [db.user, db.comment]
     })
     .then(post => {
@@ -82,7 +82,8 @@ router.get('/:id', (req, res) => {
 router.get('/update/:id', (req, res) => {
     let postId = req.params.id
     db.post.findOne({
-        where: {id: postId} 
+        where: {id: postId},
+        include: [db.user] 
     })
     .then(post => {
         res.render('posts/update.ejs', {post: post})
@@ -93,12 +94,29 @@ router.get('/update/:id', (req, res) => {
 })
 
 router.put('/update/:id', (req, res) => {
+    const updates = {}
+    updates.title = req.body.title
+    updates.content = req.body.content
+    let postId = req.body.postId
+    console.log(req.body)
+    db.post.update(updates, {where: {id: req.body.postId}})
+    .then(updatedPost => {
+        res.redirect(`/posts/${postId}`)
+    })
+    /*
     db.post.findOne({
         where: {id: postId}
     })
     .then(post => {
-        res.redirect('/:id')
+        post.updateAttributes({
+            title: updatedTitle,
+            content: updatedContent,
+        })
+        .then(updatedPost => {
+            res.redirect(`posts/${postId}`)
+        })
     })
+    */
     .catch(error => {
         console.log(error)
     })
@@ -106,9 +124,10 @@ router.put('/update/:id', (req, res) => {
 
 //DELETE /posts/:id - delete a post
 router.delete('/:id', (req, res) => {
-    let postId = req.params.id
+    let postId = parseInt(req.params.id)
     db.post.destroy({
-        where: {id: postId}
+        where: {id: postId},
+        include: [db.user]
     })
     .then(deletedPost => {
         console.log(`ROW ${postId} DELETED`)

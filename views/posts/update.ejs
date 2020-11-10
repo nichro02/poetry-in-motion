@@ -1,1 +1,27 @@
-<h1>POST UPDATE</h1>
+<h1>Update Post</h1>
+
+<form action="/posts/update/:id/?_method=PUT" method=POST>
+    <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" name = "title" value="<%= post.title %>" required>
+    </div>
+
+    <img src="<%= post.image %>">
+
+    <div>
+        <label for="content">Content</label>
+        <input type="text" id="content" name="content" value="<%= post.content %>" required>
+    </div>
+
+    <div>
+        <input type="hidden" id="postId" name="postId" value="<%=post.id%>" required>
+    </div>
+
+    <div>
+        <input type="hidden" id="userId" name="userId" value="<%=post.user.id%>" required>
+    </div>
+
+    <input type="submit" value="Update Post">
+</form>
+
+<a href="/posts/<%=post.id%>">&larr; Cancel Update</a>

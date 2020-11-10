@@ -65,6 +65,7 @@ router.get('/index', (req, res) => {
 
 //GET /posts/:id - display a specific post
 router.get('/:id', (req, res) => {
+    //let postId = req.params.id
     db.post.findOne({
         where: {id: req.params.id},
         include: [db.user, db.comment]
@@ -78,6 +79,30 @@ router.get('/:id', (req, res) => {
 })
 
 //UPDATE /posts/:id - update a post
+router.get('/update/:id', (req, res) => {
+    let postId = req.params.id
+    db.post.findOne({
+        where: {id: postId} 
+    })
+    .then(post => {
+        res.render('posts/update.ejs', {post: post})
+    })
+    .catch(error => {
+        console.log(error)
+    })
+})
+
+router.put('/update/:id', (req, res) => {
+    db.post.findOne({
+        where: {id: postId}
+    })
+    .then(post => {
+        res.redirect('/:id')
+    })
+    .catch(error => {
+        console.log(error)
+    })
+})
 
 //DELETE /posts/:id - delete a post
 router.delete('/:id', (req, res) => {

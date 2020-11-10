@@ -13,6 +13,7 @@ app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 //body parser middleware
 app.use(express.urlencoded({ extended: false }))
+//middleware to hook up css
 app.use(express.static(__dirname + '/public/'))
 //middleware for update/delete routes
 app.use(methodOverride('_method'))

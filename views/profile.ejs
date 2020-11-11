@@ -1,10 +1,14 @@
-<h2><%= currentUser.name %>'s Profile</h2>
-<h5>Posting since <%= moment(currentUser.createdAt).format('MMMM Do, YYYY') %></h5>
+<h2 id="profileName"><%= currentUser.name %>'s Profile</h2>
+<h5 id="joinDate">Posting since <%= moment(currentUser.createdAt).format('MMMM Do, YYYY') %></h5>
 
-<h3>Post History</h3>
+<form method="GET" action="/posts/new">
+    <input class="newButton" type="submit" value="Create a New Post">
+</form>
+
+<h3 class="post">Post History</h3>
 <% posts.forEach(post => { %>
-    <p><a href="posts/<%= post.dataValues.id %>"><%= post.dataValues.title %></a></p>
-    <p>Posted on <%= moment(post.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
+    <p class="post"><a href="posts/<%= post.dataValues.id %>"><%= post.dataValues.title %></a></p>
+    <p class="postDate">Posted on <%= moment(post.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
 <% }) %>
 
-<a href="/">&larr; Back to Home</a>
+<a class="navArrow" href="/">&larr; Back to Home</a>

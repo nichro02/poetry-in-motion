@@ -1,15 +1,20 @@
 <h1>Poetry in Motion Homepage</h1>
 
-<h3>View Posts</h3>
-<section>
-    <form action = "/posts/index" method = "GET">
-        <input type = "submit" value="View Posts">
-    </form>
-</section>
+<div>
+    <p id="intro">Poetry in Motion is the perfect app if you want to get your creative juices flowing. Click to create a new post and you will get a random image to inspire your writing, whether it is poetry, a song, a note to yourself, or your grocery list. Feel free to take a look at other people's posts, too!</p>
+</div>
 
-<h3>New Posts</h3>
-<section>
-    <form action = "/posts/new" method = "GET">
-        <input type = "submit" value="Make a New Post">
-    </form>
-</section>
+<div id="homepage">
+    <section id="view">
+        <form action = "/posts/index" method = "GET">
+            <input id="viewPostsButton" class="button" type = "submit" value="View Posts">
+        </form>
+    </section>
+
+
+    <section id="new">
+        <form action = "/posts/new" method = "GET">
+            <input class="newButton" type = "submit" value="Write a New Post">
+        </form>
+    </section>
+</div>

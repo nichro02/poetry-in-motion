@@ -1,9 +1,8 @@
 <h1 id="postTitle"><%= post.title %></h1>
 <h3 id="author"><%= post.user.name %></h3>
 <p id="date">Written on <%= moment(post.createdAt).format('MMMM Do, YYYY') %></p>
-
 <img src="<%= post.image %>">
-<p id="content"><%= post.content %></p>
+<p id="postContent"><%= post.content %></p>
 <div id="comment">
     <h3>Comments</h3>
     <% if(post.comments.length > 0) { %>
@@ -31,18 +30,27 @@
         <input type="hidden" id="userId" name="userId" value="<%=post.user.id%>" required>
     </div>
 
-  <input type="submit" value="Add Comment">
+    <br>
+
+    <input class="button" id="commentButton" type="submit" value="Add Comment">
 </form>
 
-<form method="POST" action="/posts/<%=post.id%>/?_method=DELETE">
-    <input type="submit" value="Delete Post">
-</form>
+<section>
+    <form class="buttonContainer" method="GET" action="/posts/update/<%=post.id%>/?_method=PUT">
+        <br>
+        <input class="button" id="updateButton" type="submit" value="Update Post">
+    </form>
 
-<form method="GET" action="/posts/update/<%=post.id%>/?_method=PUT">
-    <input type="submit" value="Update Post">
-</form>
+    <form class="buttonContainer" method="GET" action="/posts/new">
+        <input class="newButton" type="submit" value="Create a New Post">
+    </form>
 
-<a href="/posts/index">&larr; Back to Index</a>
+    <form class="buttonContainer" method="POST" action="/posts/<%=post.id%>/?_method=DELETE">
+        <input class="button" id="deleteButton" type="submit" value="Delete Post">
+    </form>
+</section>
+
+<a class="navArrow" href="/posts/index">&larr; Back to Index</a>
 
 <footer>
     <p>

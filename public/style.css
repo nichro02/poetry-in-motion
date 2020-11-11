@@ -4,16 +4,92 @@ body {
     font-family: 'Calistoga', sans-serif;
     background-image: url("/hiclipart.com.png");
     background-color: lightblue;
-    
 }
 
-#postTitle, #author, #date, #content {
+img {
+    display: block;
+    margin: 0 auto;
+    size: 70%;
+}
+
+#postTitle, #author, #date, #postContent, #intro {
     text-shadow: 1px 1px 0 white;
     text-align: center;
+}
+
+#postTitle, #postContent, #profileName, .post {
+    font-size: 250%;
+}
+
+#joinDate, .postDate, .navArrow {
+    font-size: 125%;
 }
 
 #comment {
     text-shadow: 1px 1px 0 white;
     border: 1px solid black;
     background-color: lightgrey;
+}
+
+#deleteButton {
+    background-color: red;
+    cursor: pointer;
+}
+
+#updateButton {
+    background-color: green;
+    cursor: pointer;
+}
+
+#commentButton {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+#viewPostsButton {
+    background-color: black;
+    color: white;
+}
+
+.newButton {
+    background-color: purple;
+    color: white;
+    display: inline-block;
+    margin: 0 auto;
+    border-radius: 12px;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.button {
+    margin: 0 auto;
+    border-radius: 12px;
+    width: 150px;
+    height: 50px
+}
+
+.buttonContainer {
+    display: inline-block;
+    margin: 0 auto;
+    width: 30%;
+    text-align: center;
+}
+
+.navArrow {
+    size: 155%;
+}
+
+#homepage {
+    display: flex;
+    justify-content: space-around;
+}
+
+#view {
+    align-self: flex-start;
+}
+
+#new {
+    align-self: flex-end;
 }

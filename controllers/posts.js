@@ -2,9 +2,10 @@ let express = require('express')
 const router = express.Router()
 let db = require('../models')
 const axios = require('axios')
+const isLoggedIn = require('../middleware/isLoggedIn')
 
 //GET /posts/new - create a new post
-router.get('/new', (req, res) => {
+router.get('/new',isLoggedIn, (req, res) => {
     console.log('REQ.USER--->',req.user.dataValues)
     const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${process.env.access_key}`
     axios.get(unsplashUrl)
@@ -32,7 +33,7 @@ router.get('/new', (req, res) => {
 
 
 //POST /posts - display form to create new post
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
     console.log(req.body)
     db.post.create({
         title: req.body.title,

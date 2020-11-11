@@ -1,1 +1,8 @@
 <h2><%= currentUser.name %>'s Profile</h2>
+
+<h3>Post History</h3>
+<% posts.forEach(post => { %>
+    <p><a href="posts/<%= post.dataValues.id %>"><%= post.dataValues.title %></a></p>
+<% }) %>
+
+<a href="/">&larr; Back to Home</a>

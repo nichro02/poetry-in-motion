@@ -7,6 +7,7 @@ const session = require('express-session')
 const passport = require('./config/ppConfig.js')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
+const db = require('./models/index.js')
 
 
 app.set('view engine', 'ejs')
@@ -49,7 +50,16 @@ app.get('/', (req, res)=> {
 
 //SET UP PROFILE ROUTE, USE AUTHORIZATION
 app.get('/profile', isLoggedIn, (req, res) => {
-    res.render('profile.ejs')
+    db.post.findAll({
+        where: {userId: req.user.dataValues.id}
+    })
+    .then(posts => {
+        console.log(posts)
+        res.render('profile.ejs', {posts: posts})
+    })
+    .catch(error => {
+        console.log(error)
+    })
 })
 
 let server = app.listen(process.env.PORT || 3000, function() {

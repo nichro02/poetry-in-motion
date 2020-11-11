@@ -1,9 +1,10 @@
 let express = require('express')
 const router = express.Router()
 let db = require('../models')
+const isLoggedIn = require('../middleware/isLoggedIn')
 
 //POST /comments  add comment to a post
-router.post('/', (req,res) => {
+router.post('/', isLoggedIn, (req,res) => {
     db.comment.create({
         name: req.user.dataValues.name,
         content: req.body.content,

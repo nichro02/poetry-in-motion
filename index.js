@@ -8,6 +8,7 @@ const passport = require('./config/ppConfig.js')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const db = require('./models/index.js')
+let moment = require('moment')
 
 
 app.set('view engine', 'ejs')
@@ -37,6 +38,11 @@ app.use((req, res, next)=>{
     res.locals.currentUser = req.user
     next() //move on to next piece of middleware
 })
+//middleware to access moment library
+app.use((req, res, next) => {
+    res.locals.moment = moment
+    next()
+  })
 
 //set up middleware for controllers
 app.use('/auth', require('./controllers/auth.js'))

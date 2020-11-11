@@ -39,7 +39,8 @@ router.post('/', isLoggedIn, (req, res) => {
         title: req.body.title,
         content: req.body.content,
         image: req.body.image,
-        userId: req.body.userId
+        userId: req.body.userId,
+        photographerName: req.body.photographerName
     })
     .then(createdPost => {
         console.log('CREATED POST --->', createdPost)

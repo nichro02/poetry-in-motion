@@ -1,9 +1,10 @@
 <h2><%= currentUser.name %>'s Profile</h2>
-<h5>Posting since <%= moment (currentUser.createdAt).format('MMMM Do, YYYY') %></h5>
+<h5>Posting since <%= moment(currentUser.createdAt).format('MMMM Do, YYYY') %></h5>
 
 <h3>Post History</h3>
 <% posts.forEach(post => { %>
     <p><a href="posts/<%= post.dataValues.id %>"><%= post.dataValues.title %></a></p>
+    <p>Posted on <%= moment(post.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
 <% }) %>
 
 <a href="/">&larr; Back to Home</a>

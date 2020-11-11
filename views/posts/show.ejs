@@ -1,17 +1,21 @@
-<h1><%= post.title %></h1>
-<h3><%= post.user.name %></h3>
-<img src="<%= post.image %>">
-<p><%= post.content %></p>
-<h4>Comments</h4>
-<% if(post.comments.length > 0) { %>
-    <% post.comments.forEach(comment => { %>
-        <p><%= comment.dataValues.name %></p>
-        <p><%= comment.dataValues.content %></p>
-    <% }) %>
-<% } else { %>
-    <p>No comments yet</p>
-<% } %>
+<h1 id="postTitle"><%= post.title %></h1>
+<h3 id="author"><%= post.user.name %></h3>
+<p id="date">Written on <%= moment(post.createdAt).format('MMMM Do, YYYY') %></p>
 
+<img src="<%= post.image %>">
+<p id="content"><%= post.content %></p>
+<div id="comment">
+    <h3>Comments</h3>
+    <% if(post.comments.length > 0) { %>
+        <% post.comments.forEach(comment => { %>
+            <p><%= comment.dataValues.content %></p>
+            <p><%= comment.dataValues.name %></p>
+            <p><%= moment(comment.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
+    <% }) %>
+    <% } else { %>
+        <p>No comments yet</p>
+    <% } %>
+</div>
 <h4>Add a Comment</h4>
 <form action="/comments" method="POST">  
     <div>
@@ -30,8 +34,6 @@
   <input type="submit" value="Add Comment">
 </form>
 
-<a href="/posts/index">&larr; Back to Index</a>
-
 <form method="POST" action="/posts/<%=post.id%>/?_method=DELETE">
     <input type="submit" value="Delete Post">
 </form>
@@ -40,8 +42,10 @@
     <input type="submit" value="Update Post">
 </form>
 
+<a href="/posts/index">&larr; Back to Index</a>
+
 <footer>
     <p>
-        Photo by <a href="https://unsplash.com/?utm_source=Poetry_In_Motion&utm_medium=referral">Unsplash</a>
+        Photo by <%=post.photographerName%> on <a href="https://unsplash.com/?utm_source=Poetry_In_Motion&utm_medium=referral">Unsplash</a>
     </p>
 </footer>

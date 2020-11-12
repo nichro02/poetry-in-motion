@@ -33,7 +33,6 @@ router.get('/new',isLoggedIn, (req, res) => {
 //Need to attribute Unsplash, the photographer, and a link to the photographer's Unsplash profile
 //https://help.unsplash.com/en/articles/2511315-guideline-attribution
 
-
 //POST /posts - display form to create new post
 router.post('/', isLoggedIn, (req, res) => {
     db.post.create({
@@ -89,10 +88,16 @@ router.get('/update/:id', isLoggedIn, (req, res) => {
         include: [db.user] 
     })
     .then(post => {
+        console.log('POST INFOR ----->', post)
+        if(post.dataValues.userId === req.user.id) {
         res.render('posts/update.ejs', {post: post})
+        } else {
+            res.redirect(`/posts/${postId}`)
+        }
     })
     .catch(error => {
         console.log(error)
+        res.render('/')
     })
 })
 
@@ -113,7 +118,6 @@ router.put('/update/:id', (req, res) => {
 //DELETE /posts/:id - delete a post
 router.delete('/:id', isLoggedIn, (req, res) => {
     let postId = parseInt(req.params.id)
-    console.log('PARAMS -----> ',req.params)
     db.post.destroy({
         where: {id: postId, userId: req.user.id},
         include: [db.user]

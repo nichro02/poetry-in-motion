@@ -5,6 +5,7 @@
         <a href="/posts/<%= post.id %>"><%= post.title %></a>
     </h3>
     <p>by <%= post.user.name %> </p>
+    <p><%= moment(post.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
 <% }) %>
 
 <a href="/">&larr; Back to Home</a>

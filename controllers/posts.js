@@ -17,14 +17,16 @@ router.get('/new',isLoggedIn, (req, res) => {
         data.photographerLink = photo.links.html
         data.userId = req.user.dataValues.id
         data.userName = req.user.dataValues.name
-        console.log('API RESPONSE',photo)
-        console.log('HOTLINK', photo.urls.regular)
-        console.log('PHOTOGRAPHER NAME', photo.user.name)
-        console.log('PHOTOGRAPHER LINK', photo.user.links.html)
-        console.log(data)
+        //console.log('API RESPONSE',photo)
+        //console.log('HOTLINK', photo.urls.regular)
+        //console.log('PHOTOGRAPHER NAME', photo.user.name)
+        //console.log('PHOTOGRAPHER LINK', photo.user.links.html)
+        //console.log(data)
         res.render('posts/new.ejs', data)
     })
-    
+    .catch(error => {
+        console.log(error)
+    })
 })
 //Limit of 50 API requests/hour
 //Photos need to be hotlinked
@@ -34,7 +36,6 @@ router.get('/new',isLoggedIn, (req, res) => {
 
 //POST /posts - display form to create new post
 router.post('/', isLoggedIn, (req, res) => {
-    console.log(req.body)
     db.post.create({
         title: req.body.title,
         content: req.body.content,
@@ -43,8 +44,8 @@ router.post('/', isLoggedIn, (req, res) => {
         photographerName: req.body.photographerName
     })
     .then(createdPost => {
-        console.log('CREATED POST --->', createdPost)
-        res.redirect('/')
+        console.log('CP -----> ',createdPost)
+        res.redirect(`/posts/${createdPost.dataValues.id}`)
     })
     .catch(error => {
         console.log(error)
@@ -57,7 +58,7 @@ router.get('/index', (req, res) => {
         include: [db.user]
     })
     .then(posts => {
-        console.log(posts)
+        console.log('POSTS--->',posts)
         res.render('posts/index.ejs', {posts: posts})
     })
     .catch(error => {
@@ -81,7 +82,7 @@ router.get('/:id', (req, res) => {
 })
 
 //UPDATE /posts/:id - update a post
-router.get('/update/:id', (req, res) => {
+router.get('/update/:id', isLoggedIn, (req, res) => {
     let postId = req.params.id
     db.post.findOne({
         where: {id: postId},
@@ -100,32 +101,17 @@ router.put('/update/:id', (req, res) => {
     updates.title = req.body.title
     updates.content = req.body.content
     let postId = req.body.postId
-    console.log(req.body)
     db.post.update(updates, {where: {id: req.body.postId}})
     .then(updatedPost => {
         res.redirect(`/posts/${postId}`)
     })
-    /*
-    db.post.findOne({
-        where: {id: postId}
-    })
-    .then(post => {
-        post.updateAttributes({
-            title: updatedTitle,
-            content: updatedContent,
-        })
-        .then(updatedPost => {
-            res.redirect(`posts/${postId}`)
-        })
-    })
-    */
     .catch(error => {
         console.log(error)
     })
 })
 
 //DELETE /posts/:id - delete a post
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isLoggedIn, (req, res) => {
     let postId = parseInt(req.params.id)
     db.post.destroy({
         where: {id: postId},

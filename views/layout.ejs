@@ -7,21 +7,24 @@
     <title>Poetry in Motion</title>
 </head>
 <body>
-    <header>
+    <header class= "navBar">
         <h1>Poetry in Motion</h1>
         <nav>
             <ul>
                 <%if(!currentUser) {%>
-                    <li><a href="/auth/signup">Sign Up</a></li>
-                    <li><a href="/auth/login">Log In</a></li>
+                    <li class="navBarElement"><a href="/auth/signup">Sign Up</a></li>
+                    <li class="navBarElement"><a href="/auth/login">Log In</a></li>
                 <%} else {%>
-                    <li><a href="/auth/logout">Log Out</a></li>
-                    <li><a href="/profile">Profile</a></li>
+                    <p><%= currentUser.name %> is signed in</p>
+                    <li class="navBarElement"><a href="/auth/logout">Log Out</a></li>
+                    <li class="navBarElement"><a href="/profile">Profile</a></li>
                 <%}%>
             </ul>
         </nav>
     </header>
+    <div class = "container">
     <%- include('partials/alerts.ejs') %>
     <%- body %>
+    </div>
 </body>
 </html>

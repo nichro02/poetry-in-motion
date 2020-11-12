@@ -6,7 +6,7 @@ const isLoggedIn = require('../middleware/isLoggedIn')
 
 //GET /posts/new - create a new post
 router.get('/new',isLoggedIn, (req, res) => {
-    console.log('REQ.USER--->',req.user.dataValues)
+    //console.log('REQ.USER--->',req.user.dataValues)
     const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${process.env.access_key}`
     axios.get(unsplashUrl)
     .then(function(apiResponse) {
@@ -58,7 +58,7 @@ router.get('/index', (req, res) => {
         include: [db.user]
     })
     .then(posts => {
-        console.log('POSTS--->',posts)
+        //console.log('POSTS--->',posts)
         res.render('posts/index.ejs', {posts: posts})
     })
     .catch(error => {
@@ -113,16 +113,19 @@ router.put('/update/:id', (req, res) => {
 //DELETE /posts/:id - delete a post
 router.delete('/:id', isLoggedIn, (req, res) => {
     let postId = parseInt(req.params.id)
+    console.log('PARAMS -----> ',req.params)
     db.post.destroy({
-        where: {id: postId},
+        where: {id: postId, userId: req.user.id},
         include: [db.user]
     })
     .then(deletedPost => {
         console.log(`ROW ${postId} DELETED`)
         res.redirect('/')
+        
     })
     .catch(error => {
         console.log(error)
+        //res.redirect(`/posts/${postId}`)
     })
 })
 

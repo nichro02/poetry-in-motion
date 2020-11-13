@@ -8,14 +8,14 @@
 </head>
 <body>
     <header class= "navBar">
-        <h1>Poetry in Motion</h1>
+        <h1 id="fixedHeader">Poetry in Motion</h1>
         <nav>
             <ul>
                 <%if(!currentUser) {%>
                     <li class="navBarElement"><a href="/auth/signup">Sign Up</a></li>
                     <li class="navBarElement"><a href="/auth/login">Log In</a></li>
                 <%} else {%>
-                    <p><%= currentUser.name %> is signed in</p>
+                    <p id="userName" class="navBarElement"><%= currentUser.name %> is signed in</p>
                     <li class="navBarElement"><a href="/auth/logout">Log Out</a></li>
                     <li class="navBarElement"><a href="/profile">Profile</a></li>
                 <%}%>

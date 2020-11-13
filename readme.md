@@ -26,7 +26,9 @@ Finally, I set up my EJS layout page, which served as a template for the other E
 Pseudocode helped greatly when I actually began writing code. I had already made note of the routes I needed, so I was able to focus on executing and troubleshooting rather than planning on the fly. I prefer to write code incrementally and test it often so putting in the work upfront to plan out my app was huge.
 
 ## CHALLENGES
-I underestimated the amount of time I would spend on the photographer attribution aspect of each post.
+I underestimated the amount of time I would spend on the photographer attribution aspect of each post. I wanted to make sure that the photographers whose photos were retrieved by the API call received attribution. After debating between storing the photographer's name as part of the post model and making an API call, I decided on the former, due to timing constraints and concerns about hitting the limit of hourly API calls, I decided to include the photographer name in the database.
+
+I also wanted to challenge myself on the design front because I felt like it was a good opportunity to hone my design skills. I identified two areas of focus that I thought would improve the user-friendliness of my app: a fixed header and responsive design. My biggest challenge on the design front was accounting for the different breakpoints and altering the necessary elements on the page to make a cohesive experience for every device. I was pleased for my first attempt at a responsive design, but this is definitely an area I can improve upon in future iterations.
 
 # CONCLUSION
-For my first full-stack app, I'm proud of the initial product. It is an app that I can continue to scale and add functionality. Hopefully you enjoy it!
+For my first full-stack app, I'm proud of the initial product. I incorporated the knowledge I had gained, identified ares that required further research, and got a fair amount of practice troubleshooting. Poetry in Motion is an app that I can continue to scale and add functionality to. Hopefully you enjoy it!

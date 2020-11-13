@@ -29,6 +29,7 @@ img {
     text-shadow: 1px 1px 0 white;
     border: 1px solid black;
     background-color: lightgrey;
+    padding: 0 0 0 8px;
 }
 
 #deleteButton {
@@ -137,17 +138,43 @@ nav {
     img {
         width: 300px;
     }
-}
-
-@media screen and (min-width: 421px) and (max-width: 767px) {
-    img {
-        width: 300px;
+    .auth {
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+    }
+    .buttonContainer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+    form, h4 {
+        text-align: center;
     }
 }
 
 @media screen and (max-width: 420px) {
     img {
         width: 250px;
+        margin: 0 auto;
+    }
+    .button, .newButton, form {
+        margin: 0 auto;
+    }
+    form, h4 {
+        text-align: center;
+    }
+    .buttonContainer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .container {
+        padding: 0;
+    }
+    .auth {
+        display: block;
+        margin: 0px auto;
     }
 }
 

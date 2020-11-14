@@ -8,8 +8,8 @@
     <% if(post.comments.length > 0) { %>
         <% post.comments.forEach(comment => { %>
             <p><%= comment.dataValues.content %></p>
-            <p><%= comment.dataValues.name %></p>
-            <p><%= moment(comment.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
+            <p class="commentText"><%= comment.dataValues.name %></p>
+            <p class="commentText"><%= moment(comment.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
     <% }) %>
     <% } else { %>
         <p>No comments yet</p>

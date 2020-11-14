@@ -15,7 +15,7 @@ router.post('/', isLoggedIn, (req,res) => {
         res.redirect(`/posts/${req.body.postId}`)
     })
     .catch(error => {
-        console.log(error)
+        res.send('Apologies, we\'ve encountered an error')
     })
 })
 

@@ -43,11 +43,10 @@ router.post('/', isLoggedIn, (req, res) => {
         photographerName: req.body.photographerName
     })
     .then(createdPost => {
-        console.log('CP -----> ',createdPost)
         res.redirect(`/posts/${createdPost.dataValues.id}`)
     })
     .catch(error => {
-        console.log(error)
+        res.send('Apologies, we\'ve encountered an error')
     })
 })
 
@@ -57,11 +56,10 @@ router.get('/index', (req, res) => {
         include: [db.user]
     })
     .then(posts => {
-        //console.log('POSTS--->',posts)
         res.render('posts/index.ejs', {posts: posts})
     })
     .catch(error => {
-        console.log(error)
+        res.send('Apologies, we\'ve encountered an error')
     })
 })
 
@@ -76,7 +74,7 @@ router.get('/:id', (req, res) => {
         res.render('posts/show.ejs', {post: post})
     })
     .catch(error => {
-        console.log(error)
+        res.send('Apologies, we\'ve encountered an error')
     })
 })
 
@@ -96,7 +94,6 @@ router.get('/update/:id', isLoggedIn, (req, res) => {
         }
     })
     .catch(error => {
-        console.log(error)
         res.render('/')
     })
 })
@@ -111,7 +108,7 @@ router.put('/update/:id', (req, res) => {
         res.redirect(`/posts/${postId}`)
     })
     .catch(error => {
-        console.log(error)
+        res.send('Apologies, we\'ve encountered an error')
     })
 })
 
@@ -128,8 +125,7 @@ router.delete('/:id', isLoggedIn, (req, res) => {
         
     })
     .catch(error => {
-        console.log(error)
-        //res.redirect(`/posts/${postId}`)
+        res.send('Apologies, we\'ve encountered an error')
     })
 })
 

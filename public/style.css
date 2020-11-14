@@ -33,6 +33,14 @@ img {
     padding: 0 0 0 8px;
 }
 
+.commentText {
+    font-size: 75%;
+}
+
+#loginButton {
+    cursor: pointer;
+}
+
 #deleteButton {
     background-color: red;
     cursor: pointer;

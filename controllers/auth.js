@@ -21,7 +21,6 @@ router.post('/signup', (req, res)=> {
     })
     .then(([createdUser, wasCreated])=> {
         if(wasCreated){
-            console.log(`CREATED USER----> ${createdUser}`)
             //log new user in
             passport.authenticate('local' , {
                 successRedirect: '/',
@@ -30,13 +29,10 @@ router.post('/signup', (req, res)=> {
         } else {
             req.flash('error', 'email already exists, try logging in')
             res.redirect('/auth/login')
-            //console.log('Account with that email already exists. Try logging in')
         }
-        //redirect to login page
-        //res.redirect('/auth/login')
+
     })
     .catch(err=>{
-        //console.log('Did not post new signup to database --->', err)
         req.flash('error', err.message)
         res.redirect('/auth/signup')
     })

@@ -1,5 +1,5 @@
 # APP DESCRIPTION
-Poetry in motion is designed to get the creative juices flowing for people on the go. A random picture is generated with each new post, and this can serve as your inspiration or simply be something that is nice to look at while you're taking notes.
+Poetry in motion is designed to get the creative juices flowing for people on the go. A random picture is generated with each new post, and this can serve as your inspiration to write a few words or a few sentences, or simply be something that is nice to look at while you're taking notes.
 
 # TECHNOLOGY
 * Node.js
@@ -14,7 +14,7 @@ Poetry in motion is designed to get the creative juices flowing for people on th
 I drafted an [ERD](https://lucid.app/invitations/accept/d7c024b2-cd71-4133-8911-fe77740f03fa) and [wireframe](https://lucid.app/invitations/accept/6d4e680a-a358-4995-94b2-7752a3042411) before writing any code in order to make sure I had a clear understanding of what models I needed to include in my app, how they related to each other, and what I wanted my app to ultimately look like. As part of planning, I also needed to find an API that would allow me to fetch a random picture to serve as inspiration for each post. I knew Unsplash had the types of photos I was looking for, and it turns out they have an API for developers. The JSON objects returned by the API call looked navigable so I settled on Unsplash's API.
 
 ## STRUCTURE AND PSEUDOCODE
-Once I had a clear vision of what I wanted the app to be and how I wanted it to work, I focused on setting up the structure of the app and writing pseudocode that would help guide the actual writing of the code. It gave me the chance to really make sure I understood the direction I wanted to take.
+Once I had a clear vision of what I wanted the app to be and how I wanted it to work, I focused on setting up the structure of the app and writing pseudocode that would help guide the actual writing of the code. It gave me the chance to really make sure I understood the direction I wanted to take, and how I was going to make my app RESTful.
 
 Building out the structure of the app also required incorporating authorization (through bcrypt, oAuth, express sessions, and passport) and my ORM (Sequelize). I was able to leverage an auth boilerplate I had previously set up, and my ERD was useful in helping me set up the models I use in the app.
 

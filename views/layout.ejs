@@ -16,8 +16,17 @@
                     <li class="navBarElement"><a href="/auth/login">Log In</a></li>
                 <%} else {%>
                     <p id="userName" class="navBarElement"><%= currentUser.name %> is signed in</p>
-                    <li class="navBarElement"><a href="/auth/logout">Log Out</a></li>
-                    <li class="navBarElement"><a href="/profile">Profile</a></li>
+                    <div class="dropdown">
+                        <button class="dropdownButton">
+                            <i class="fa fa-caret-down">Actions</i>
+                        </button>
+                        <div class="dropdown-content">
+                            <li class="navBarElement"><a href="/profile">Profile</a></li>
+                            <li class="navBarElement"><a href="/posts/index">See What's Trending</a></li>
+                            <li class="navBarElement"><a href="/posts/new">Create a New Post</a></li>
+                            <li class="navBarElement"><a href="/auth/logout">Log Out</a></li>
+                        </div>
+                    </div>
                 <%}%>
             </ul>
         </nav>

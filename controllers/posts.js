@@ -17,11 +17,6 @@ router.get('/new',isLoggedIn, (req, res) => {
         data.photographerLink = photo.links.html
         data.userId = req.user.dataValues.id
         data.userName = req.user.dataValues.name
-        //console.log('API RESPONSE',photo)
-        //console.log('HOTLINK', photo.urls.regular)
-        //console.log('PHOTOGRAPHER NAME', photo.user.name)
-        //console.log('PHOTOGRAPHER LINK', photo.user.links.html)
-        //console.log(data)
         res.render('posts/new.ejs', data)
     })
     .catch(error => {
@@ -120,7 +115,6 @@ router.delete('/:id', isLoggedIn, (req, res) => {
         include: [db.user]
     })
     .then(deletedPost => {
-        console.log(`ROW ${postId} DELETED`)
         res.redirect('/')
         
     })

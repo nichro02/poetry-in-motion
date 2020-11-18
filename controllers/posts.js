@@ -83,7 +83,7 @@ router.get('/update/:id', isLoggedIn, (req, res) => {
     .then(post => {
         console.log('POST INFOR ----->', post)
         if(post.dataValues.userId === req.user.id) {
-        res.render('posts/update.ejs', {post: post})
+            res.render('posts/update.ejs', {post: post})
         } else {
             res.redirect(`/posts/${postId}`)
         }

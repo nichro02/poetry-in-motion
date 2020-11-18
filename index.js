@@ -70,6 +70,6 @@ app.get('/profile', isLoggedIn, (req, res) => {
 
 let server = app.listen(process.env.PORT || 3000, function() {
     console.log(`you're listening to the smooth sounds of port ${process.env.PORT}`)
-  })
+})
   
 module.exports = server

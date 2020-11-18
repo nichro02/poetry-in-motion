@@ -18,6 +18,10 @@ img {
     text-align: center;
 }
 
+.updateForm {
+    text-align: center;
+}
+
 #postTitle, #postContent, #profileName, .post {
     font-size: 250%;
 }

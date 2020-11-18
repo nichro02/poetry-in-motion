@@ -1,6 +1,6 @@
 <h1 id="postTitle"><%= post.title %></h1>
 <h3 id="author"><%= post.user.name %></h3>
-<p id="date">Written on <%= moment(post.createdAt).format('MMMM Do, YYYY') %></p>
+<p id="date">Written on <%= post.createdAt.toLocaleDateString("en-US") %></p>
 <img src="<%= post.image %>">
 <p id="postContent"><%= post.content %></p>
 <div id="comment">
@@ -9,7 +9,7 @@
         <% post.comments.forEach(comment => { %>
             <p><%= comment.dataValues.content %></p>
             <p class="commentText"><%= comment.dataValues.name %></p>
-            <p class="commentText"><%= moment(comment.dataValues.createdAt).format('MMMM Do, YYYY') %></p>
+            <p><%= comment.dataValues.createdAt.toLocaleDateString("en-US") %></p>
     <% }) %>
     <% } else { %>
         <p>No comments yet</p>

@@ -85,6 +85,7 @@ router.get('/update/:id', isLoggedIn, (req, res) => {
         if(post.dataValues.userId === req.user.id) {
             res.render('posts/update.ejs', {post: post})
         } else {
+            req.flash('error','Only post creators can update posts')
             res.redirect(`/posts/${postId}`)
         }
     })
@@ -116,7 +117,6 @@ router.delete('/:id', isLoggedIn, (req, res) => {
     })
     .then(deletedPost => {
         res.redirect('/')
-        
     })
     .catch(error => {
         res.send('Apologies, we\'ve encountered an error')

@@ -45,6 +45,7 @@
     </form>
 
     <form class="buttonContainer" method="POST" action="/posts/<%=post.id%>/?_method=DELETE">
+        <input type="hidden" id="userId" name="userId" value="<%=post.user.id%>" required>
         <input class="button" id="deleteButton" type="submit" value="Delete Post">
     </form>
 </section>

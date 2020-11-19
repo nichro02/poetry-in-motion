@@ -1,7 +1,7 @@
 # APP DESCRIPTION
 Poetry in motion is designed to get the creative juices flowing for people on the go. A random picture is generated with each new post, and this can serve as your inspiration to write a few words or a few sentences, or simply be something that is nice to look at while you're taking notes.
 
-You can access Poetry in Motion (put link here).
+You can access Poetry in Motion [here](https://poetryinmotion.herokuapp.com/).
 
 # TECHNOLOGY
 * Node.js

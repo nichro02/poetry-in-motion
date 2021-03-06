@@ -35,19 +35,24 @@
 </form>
 
 <section>
-    <form class="buttonContainer" method="GET" action="/posts/update/<%=post.id%>/?_method=PUT">
-        <br>
-        <input class="button" id="updateButton" type="submit" value="Update Post">
-    </form>
+    <% if(post.user.id===currentUser.id){%>
+        <form class="buttonContainer" method="GET" action="/posts/update/<%=post.id%>/?_method=PUT">
+            <br>
+            <input class="button" id="updateButton" type="submit" value="Update Post">
+        </form>
+    <%}%>
+    
 
     <form class="buttonContainer" method="GET" action="/posts/new">
         <input class="newButton" type="submit" value="Create a New Post">
     </form>
 
-    <form class="buttonContainer" method="POST" action="/posts/<%=post.id%>/?_method=DELETE">
-        <input type="hidden" id="userId" name="userId" value="<%=post.user.id%>" required>
-        <input class="button" id="deleteButton" type="submit" value="Delete Post">
-    </form>
+    <% if(post.user.id===currentUser.id){%>
+        <form class="buttonContainer" method="POST" action="/posts/<%=post.id%>/?_method=DELETE">
+            <input type="hidden" id="userId" name="userId" value="<%=post.user.id%>" required>
+            <input class="button" id="deleteButton" type="submit" value="Delete Post">
+        </form>
+    <%}%>
 </section>
 
 <a class="navArrow" href="/posts/index">&larr; Back to Index</a>

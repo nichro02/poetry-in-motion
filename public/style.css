@@ -2,7 +2,6 @@
 
 body {
     font-family: 'Calistoga', sans-serif;
-    background-image: url("/hiclipart.com.png");
     background-color: lightblue;
     margin: 0px;
 }
@@ -161,6 +160,7 @@ nav {
     margin-bottom: 0;
     margin-top: 10px;
     padding-inline-start: 40px;
+    text-align: center;
 }
 
 .container {

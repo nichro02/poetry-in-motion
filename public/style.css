@@ -118,6 +118,12 @@ nav {
 .navBarElement {
     display: inline;
     padding-inline-end: 20px;
+
+}
+
+.navBarRegister {
+    display: flex;
+    justify-content: space-around;
 }
 
 .dropdown {

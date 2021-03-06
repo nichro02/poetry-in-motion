@@ -12,8 +12,10 @@
         <nav>
             <ul>
                 <%if(!currentUser) {%>
-                    <li class="navBarElement"><a href="/auth/signup">Sign Up</a></li>
-                    <li class="navBarElement"><a href="/auth/login">Log In</a></li>
+                    <div class="navBarRegister">
+                    <li class="navBarRegister"><a href="/auth/signup">Sign Up</a></li>
+                    <li class="navBarRegister"><a href="/auth/login">Log In</a></li>
+                    </div>
                 <%} else {%>
                     <p id="userName" class="navBarElement"><%= currentUser.name %> is signed in</p>
                     <div class="dropdown">

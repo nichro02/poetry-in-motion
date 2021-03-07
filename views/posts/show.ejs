@@ -34,6 +34,7 @@
     <input class="button" id="commentButton" type="submit" value="Add Comment">
 </form>
 
+<% if(currentUser) {%>
 <section>
     <% if(post.user.id===currentUser.id){%>
         <form class="buttonContainer" method="GET" action="/posts/update/<%=post.id%>/?_method=PUT">
@@ -54,6 +55,7 @@
         </form>
     <%}%>
 </section>
+<%}%>
 
 <a class="navArrow" href="/posts/index">&larr; Back to Index</a>
 
